@@ -1,5 +1,5 @@
 function add(a, b) {
-    return c + d;
+    return a + b;
 }
 
 function subtract(a, b) {
@@ -45,16 +45,16 @@ let variable2= '';
 let operator = '';
 
 function operate() {
-    c = parseFloat(variable1);
-    d = parseFloat(variable2);
+    variable1 = parseFloat(variable1);
+    variable2 = parseFloat(variable2);
     if (operator == "+") {
-        return add(d, c);
+        return add(variable2, variable1);
     } else if (operator == "-") {
-        return subtract(d, c);
+        return subtract(variable2, variable1);
     } else if (operator == "x") {
-        return multiply(d, c);
+        return multiply(variable2, variable1);
     } else if (operator == "÷") {
-        return divide(d, c);
+        return divide(variable2, variable1);
     } else {
         return "Invalid operator!";
     }
@@ -70,7 +70,8 @@ const percentages= document.querySelector(".operator");
 const dot = document.querySelector(".dot");
 
 numbers.forEach(function(number) {
-    number.addEventListener('click', function(e) { 
+    number.addEventListener('click', function(e) {
+        display.innerHTML = "" 
         updateNumber(number.innerHTML)
         display.innerHTML = variable1;
     });
@@ -93,7 +94,7 @@ clear.addEventListener('click',function () {
 
 operation.addEventListener('click', function() {
     display.innerHTML = operate();
-    variable1 = display.innerHTML;
+    variable1 = "";
     variable2 = '';
     operator = '';
 });
