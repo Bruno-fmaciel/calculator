@@ -1,6 +1,4 @@
 function add(a, b) {
-    c = parseFloat(a);
-    d = parseFloat(b);
     return c + d;
 }
 
@@ -13,8 +11,8 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if (b === 0) {
-        return "Can't divide a number by zero!";
+    if (b == 0) {
+        return display.textContent = "Can't divide a number by zero!";
     } else {
         return a / b;
     }
@@ -36,19 +34,27 @@ function updateOperator(op) {
     variable1 = "";
 }
 
+function floatDot() {
+    if (!variable1.includes(".")) {
+        variable1 += '.';
+    }
+}
+
 let variable1 = '';
 let variable2= '';
 let operator = '';
 
 function operate() {
+    c = parseFloat(variable1);
+    d = parseFloat(variable2);
     if (operator == "+") {
-        return add(variable2, variable1);
+        return add(d, c);
     } else if (operator == "-") {
-        return subtract(variable2, variable1);
+        return subtract(d, c);
     } else if (operator == "x") {
-        return multiply(variable2, variable1);
+        return multiply(d, c);
     } else if (operator == "÷") {
-        return divide(variable2, variable1);
+        return divide(d, c);
     } else {
         return "Invalid operator!";
     }
@@ -61,6 +67,7 @@ const clear = document.querySelector('.clear');
 const operation = document.querySelector('.operate');
 const basicOperators = document.querySelectorAll('.basic-operator');
 const percentages= document.querySelector(".operator");
+const dot = document.querySelector(".dot");
 
 numbers.forEach(function(number) {
     number.addEventListener('click', function(e) { 
@@ -77,7 +84,9 @@ basicOperators.forEach(function(basicOperator) {
 })
 
 clear.addEventListener('click',function () {
-    variable1 = ""
+    variable1 = "";
+    variable2 = "";
+    operator = "";
     display.innerHTML = ""
 } );
 
@@ -94,7 +103,9 @@ percentages.addEventListener('click', function () {
     display.innerHTML = per;
 })
 
-
+dot.addEventListener('click', function() {
+    floatDot();
+})
 
 
 
