@@ -1,5 +1,7 @@
 function add(a, b) {
-    return a + b;
+    c = parseFloat(a);
+    d = parseFloat(b);
+    return c + d;
 }
 
 function subtract(a, b) {
@@ -23,22 +25,30 @@ function percentage(a) {
 }
 
 function updateNumber(number) {
-    display.innerHTML += number;
+    if (variable1.length <= 9) {
+        variable1 += number;
+    }
+}
+
+function updateOperator(op) {
+    operator = op;
+    variable2 = variable1;
+    variable1 = "";
 }
 
 let variable1 = '';
 let variable2= '';
 let operator = '';
 
-function operate(variable1, variable2, operator) {
+function operate() {
     if (operator == "+") {
-        return add(variable1, variable2);
+        return add(variable2, variable1);
     } else if (operator == "-") {
-        return subtract(variable1, variable2);
-    } else if (operator == "*") {
-        return multiply(variable1, variable2);
-    } else if (operator == "/") {
-        return divide(variable1, variable2);
+        return subtract(variable2, variable1);
+    } else if (operator == "x") {
+        return multiply(variable2, variable1);
+    } else if (operator == "÷") {
+        return divide(variable2, variable1);
     } else {
         return "Invalid operator!";
     }
@@ -50,27 +60,39 @@ const numbers = document.querySelectorAll(".number");
 const clear = document.querySelector('.clear');
 const operation = document.querySelector('.operate');
 const basicOperators = document.querySelectorAll('.basic-operator');
+const percentages= document.querySelector(".operator");
 
 numbers.forEach(function(number) {
     number.addEventListener('click', function(e) { 
-        updateNumber(number.innerHTML);
+        updateNumber(number.innerHTML)
+        display.innerHTML = variable1;
     });
 })
 
 basicOperators.forEach(function(basicOperator) {
-    basicOperator.addEventListener('click', () => 
-    display.innerHTML = basicOperator.innerHTML);
+    basicOperator.addEventListener('click',function () {
+        updateOperator(basicOperator.innerHTML);
+        display.innerHTML = operator;
+    });
 })
 
-clear.addEventListener('click',() => display.innerHTML = "");
-
+clear.addEventListener('click',function () {
+    variable1 = ""
+    display.innerHTML = ""
+} );
 
 
 operation.addEventListener('click', function() {
     display.innerHTML = operate();
+    variable1 = display.innerHTML;
+    variable2 = '';
+    operator = '';
 });
 
-
+percentages.addEventListener('click', function () {
+    per = percentage(variable1);
+    display.innerHTML = per;
+})
 
 
 
