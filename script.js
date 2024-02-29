@@ -18,6 +18,10 @@ function divide(a, b) {
     }
 }
 
+function percentage(a) {
+    return a/100;
+}
+
 let variable1;
 let variable2;
 let operator;
