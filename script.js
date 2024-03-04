@@ -8,7 +8,7 @@ function calculator() {
     const clear = document.querySelector('.clear');
 
     // selector All
-    const numbers = document.querySelectorAll('.number');
+    const numbers = document.querySelectorAll('.grid');
     const operators = document.querySelectorAll('.basic-operator');
 
     // Variables declaration
@@ -22,6 +22,7 @@ function calculator() {
             button.addEventListener('click', () => {
                 currentOperand === 0 ? currentOperand = '':'';
                 if (button.textContent === '.' && currentOperand.includes('.')) return
+                if (currentScreen !== '')
                 currentOperand += button.textContent;
                 updateDisplay(); 
             })
@@ -96,12 +97,20 @@ function calculator() {
         let result;
 
         if (isNaN(prev) || isNaN(curr)) return
-        operator === '+' ? result = prev + curr
-        :operator === '-' ? result = prev - curr
-        :operator === 'x' ? result = prev * curr
-        :operator === '÷' && curr===0 ? result = "You can't divide by zero!"
-        :operator === '÷' ? result = prev / curr
-        :'';
+        if (operator === '+') {
+            result = prev + curr;
+        } else if (operator === '-') {
+            result = prev - curr
+        } else if (operator === 'x') {
+            result = prev * curr
+        } else if (operator === '÷' && curr===0) {
+            result = "You can't divide by zero!"
+        } else if (operator === '÷') {
+            result = prev / curr
+        } else {
+            ''
+        }
+
 
         currentOperand = result;
         operator = null;

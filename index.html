@@ -4,36 +4,47 @@
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora</title>
+    <title>My First Calculator</title>
 </head>
 <body>
+    <h1>My first calculator (still needs improvement)</h1>
     <div id="container">
         <div class="display">
-            <div class="previous-screen">previous screen</div>
-            <div class="current-screen">current screen</div>
+            <div class="previous-screen"></div>
+            <div class="current-screen"></div>
         </div>
         <div class="buttons">
            <div class="numbers">
-                <button class="clear">Clear</button>
-                <button class="delete">del</button>
-                <button class="number">7</button>
-                <button class="number">8</button>
-                <button class="number">9</button>
-                <button class="number">4</button>
-                <button class="number">5</button>
-                <button class="number">6</button>
-                <button class="number">1</button>
-                <button class="number">2</button>
-                <button class="number">3</button>
-                <button class="number">0</button>
-                <button class="dot">.</button>
-                <button class="operate">=</button>
+                <div class="first-row">
+                    <button  class="clear">AC</button>
+                    <button  class="delete">del</button>
+                </div>
+                <div class="second-row">
+                    <button class="grid" class="number">7</button>
+                    <button class="grid" class="number">8</button>
+                    <button class="grid" class="number">9</button>
+                </div>
+                <div class="third-row">
+                    <button class="grid" class="number">4</button>
+                    <button class="grid" class="number">5</button>
+                    <button class="grid" class="number">6</button>
+                </div>
+                <div class="fourth row">
+                    <button class="grid" class="number">1</button>
+                    <button class="grid" class="number">2</button>
+                    <button class="grid" class="number">3</button>
+                </div>
+                <div class="fifht-row">
+                    <button class="grid" class="number">0</button>
+                    <button class="dot">.</button>
+                    <button class="operate">=</button>
+                </div>
            </div>
             <div class="basic-operators">
                 <button class="basic-operator">÷</button>
                 <button class="basic-operator">x</button>
                 <button class="basic-operator">-</button>
-                <button class="basic-operator">+</button>
+                <button id="plus" class="basic-operator">+</button>
             </div>
         </div>
     </div>
